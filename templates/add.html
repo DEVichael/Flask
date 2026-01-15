@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Movie</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Add Movie</h1>
+</header>
+
+<div class="container">
+    <div class="column">
+
+        {% if error %}
+            <p style="color: red; font-weight: bold;">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('add_movie') }}">
+            <label>Title:</label>
+            <input id="title" type="text" name="title">
+
+            <label>Year:</label>
+            <input id="year" type="text" name="year">
+
+            <label>Actors:</label>
+            <input id="actors" type="text" name="actors">
+
+            <button type="submit">
+                <i class="fa-solid fa-circle-plus"></i> Add
+            </button>
+        </form>
+
+        <a href="{{ url_for('home') }}">
+            <button><i class="fa-solid fa-arrow-left"></i> Back to movies</button>
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>

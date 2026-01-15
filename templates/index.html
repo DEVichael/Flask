@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My favorite movies</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <h1>My favorite movies to watch</h1>
+</header>
+
+<main>
+    <div class="column">
+        <div class="container">
+
+            <form method="POST" action="{{ url_for('delete_movies') }}">
+                <ul id="moviesList">
+                    {% for movie in movies %}
+                        <li>
+                            <input type="checkbox" name="movieToRemove" value="{{ movie[0] }}">
+                            {{ movie[1] }}, {{ movie[2] }}, {{ movie[3] }}
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <button type="submit" class="button button-outline">
+                    <i class="fa-solid fa-trash"></i> Delete selected
+                </button>
+            </form>
+
+            <a href="{{ url_for('add_movie') }}">
+                <button>
+                    <i class="fa-solid fa-file-circle-plus"></i> Strona dodawania filmów
+                </button>
+            </a>
+
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <br>
+        <label>My Movie Database — All Rights Reserved</label><br>
+    </div>
+</footer>
+
+</body>
+</html>
+
